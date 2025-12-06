@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roel</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons for hamburger -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Font Awesome (for X icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="msapplication-TileImage" content="favicon.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body oncontextmenu="return false;">
+
+  <header>
+    <h2 class="logo">Roel Acido</h2>
+
+    <!-- Bootstrap Hamburger icon -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </div>
+  </header>
+
+  <nav id="side-menu">
+    <div class="sidebar-header">
+      <h3 class="sidebar-logo">Roel Acido</h3>
+
+      <!-- UPDATED: Close button = Font Awesome X -->
+      <span class="close-btn" onclick="toggleMenu()">
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="download.html">Download</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="home-hero">
+    <div class="hero-content">
+      <h1>Our Projects</h1>
+      <p>Explore our latest projects and contributions.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Roel Acido. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("side-menu").classList.toggle("active");
+    }
+
+    // Disable Ctrl+U and F12
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.key === 'u') e.preventDefault();
+      if (e.key === 'F12') e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>

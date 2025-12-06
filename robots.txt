@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /about
+Disallow: /projects
+Disallow: /download
+Disallow: /contact
+Sitemap: https://rjacido.netlify.app/sitemap.xml
