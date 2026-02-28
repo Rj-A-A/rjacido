@@ -7,57 +7,60 @@
   <title>Roel</title>
   <link rel="stylesheet" href="style.css">
 
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
- 
- <!-- Bootstrap Icons for hamburger -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
- 
- <!-- Font Awesome for X close button -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- 
- <!-- Favicon -->
- <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
- <link rel="icon" type="image/png" href="favicon.png" sizes="192x192">
- <link rel="apple-touch-icon" href="favicon.png">
- <meta name="msapplication-TileImage" content="favicon.png">
- <meta name="theme-color" content="#ffffff">
- </head>
- 
- <body oncontextmenu="return false;">
-   
-   <header>
-     <h2 class="logo">Roel Acido</h2>
-     
-     <!-- Bootstrap Hamburger Icon -->
-     <div class="menu-toggle" onclick="toggleMenu()">
-       <i class="fa fa-bars"></i>
-     </div>
-   </header>
-   
-   <nav id="side-menu">
-     <div class="sidebar-header">
-       <h3 class="sidebar-logo">Roel Acido</h3>
-       
-       <!-- UPDATED: Font Awesome Close Button -->
-       <span class="close-btn" onclick="toggleMenu()">
-         <i class="fa fa-times"></i>
-       </span>
-     </div>
-     
-     <a href="index.html">Home</a>
-     <a href="about.html">About</a>
-     <a href="projects.html">Projects</a>
-     <a href="download.html">Download</a>
-     <a href="contact.html">Contact</a>
-   </nav>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons for hamburger -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <!-- Font Awesome for X close button -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="msapplication-TileImage" content="favicon.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body oncontextmenu="return false;">
+  
+  <header>
+    <h2 class="logo">Roel Acido</h2>
+    
+    <!-- Bootstrap Hamburger Icon -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fa fa-bars"></i>
+    </div>
+  </header>
+  
+  <nav id="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">
+      <i class="fa fa-times"></i>
+    </span>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="about.html"><i class="far fa-question-circle"></i>About</a></li>
+      <li><a href="download.html"><i class="fas fa-download"></i>Download</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+  </nav>
+
   <section class="contact-form">
     <h1>Contact Me</h1>
-    <!-- 🔥 This will open the email app with your address -->
-    <form action="mailto:acidorj24@gmail.com" method="post" enctype="text/plain">
+    
+    <form id="contactForm">
+      <label for="method">Choose Contact Method:</label>
+      <select id="method" name="method">
+        <option value="email">Email</option>
+        <option value="telegram">Telegram</option>
+      </select>
+
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
       <button type="submit">Send Message</button>
     </form>
   </section>
@@ -66,22 +69,60 @@
     <p>© 2025 Roel Acido | All Rights Reserved</p>
   </footer>
   
-<script>
-  // Your existing menu toggle function
+ <script>
+  // Menu toggle
   function toggleMenu() {
     document.getElementById("side-menu").classList.toggle("active");
   }
 
-  // Disable right-click keyboard shortcuts silently
+  // Disable right-click keyboard shortcuts
   document.addEventListener('keydown', function(e) {
-    // Disable Ctrl+U
-    if (e.ctrlKey && e.key === 'u') {
-      e.preventDefault();
+    if (e.ctrlKey && e.key === 'u') e.preventDefault();
+    if (e.key === 'F12') e.preventDefault();
+  });
+
+  const form = document.getElementById('contactForm');
+  const methodSelect = document.getElementById('method');
+  const emailInput = form.elements['email'];
+  const nameInput = form.elements['name'];
+  const messageInput = form.elements['message'];
+
+  // Toggle Email field based on contact method
+  methodSelect.addEventListener('change', function() {
+    if (this.value === 'telegram') {
+      emailInput.style.display = 'none';
+      emailInput.required = false;
+    } else {
+      emailInput.style.display = 'block';
+      emailInput.required = true;
     }
-    // Disable F12
-    if (e.key === 'F12') {
-      e.preventDefault();
+  });
+
+  // Handle form submit with validation and auto-clear
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+
+    const method = methodSelect.value;
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (method === 'email') {
+      const mailtoLink = `mailto:acidorj24@gmail.com?subject=Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nFrom: " + name + "\nEmail: " + email)}`;
+      window.location.href = mailtoLink;
+    } else if (method === 'telegram') {
+      const telegramLink = `https://t.me/rjacido2k?text=${encodeURIComponent(message + "\n\nFrom: " + name)}`;
+      window.open(telegramLink, '_blank');
     }
+
+    // Auto-clear fields after submission
+    nameInput.value = '';
+    if (method === 'email') emailInput.value = '';
+    messageInput.value = '';
+
+    // Optional: Confirmation alert
+    alert('Message is ready to be sent!');
   });
 </script>
 </body>
