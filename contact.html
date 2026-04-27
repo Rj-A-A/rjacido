@@ -24,27 +24,34 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body oncontextmenu="return false;">
+<body>
   
   <header>
-    <h2 class="logo">Roel Acido</h2>
-    
-    <!-- Bootstrap Hamburger Icon -->
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <i class="fa fa-bars"></i>
-    </div>
+    <h2 class="logo">Rj Acido</h2>
+
   </header>
   
-  <nav id="side-menu">
-    <span class="close-btn" onclick="toggleMenu()">
-      <i class="fa fa-times"></i>
-    </span>
-    <ul>
-      <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-      <li><a href="about.html"><i class="far fa-question-circle"></i>About</a></li>
-      <li><a href="download.html"><i class="fas fa-download"></i>Download</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-    </ul>
+
+<nav class="bottom-nav">
+    <a href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+
+    <a href="download.html">
+      <i class="fa-solid fa-download"></i>
+      <span>Download</span>
+    </a>
+
+    <a href="contact.html">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
   </nav>
 
   <section class="contact-form">
@@ -69,12 +76,26 @@
     <p>© 2025 Roel Acido | All Rights Reserved</p>
   </footer>
   
- <script>
-  // Menu toggle
-  function toggleMenu() {
-    document.getElementById("side-menu").classList.toggle("active");
-  }
+   <script>
+  const navLinks = document.querySelectorAll('.bottom-nav a');
 
+const currentPage = window.location.pathname.split("/").pop();
+
+navLinks.forEach(link => {
+  const linkPage = link.getAttribute("href");
+  
+  // set active on load
+  if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+    link.classList.add("active");
+  }
+  
+  // smooth instant switch on click
+  link.addEventListener("click", function() {
+    navLinks.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+  
   // Disable right-click keyboard shortcuts
   document.addEventListener('keydown', function(e) {
     if (e.ctrlKey && e.key === 'u') e.preventDefault();
@@ -124,6 +145,8 @@
     // Optional: Confirmation alert
     alert('Message is ready to be sent!');
   });
+  
 </script>
+
 </body>
 </html>

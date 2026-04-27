@@ -24,47 +24,121 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 
   <header>
-    <h2 class="logo">Roel Acido</h2>
+    <h2 class="logo">Rj Acido</h2>
 
-    <!-- Bootstrap Hamburger Icon -->
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <i class="fa fa-bars"></i>
-    </div>
   </header>
 
- <nav id="side-menu">
-  
-  <span class="close-btn" onclick="toggleMenu()">
-    <i class="fa fa-times"></i>
-  </span>
-  
-  <ul>
-    <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-    <li><a href="about.html"><i class="far fa-question-circle"></i>About</a></li>
-    <li><a href="download.html"><i class="fas fa-download"></i>Download</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-  </ul>
-  
-</nav>
+  <nav class="bottom-nav">
+    <a href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
 
-  <section class="home-hero">
-    <div class="hero-content">
-      <h1>About Us</h1>
-      <p>We are dedicated to creating awesome tools and resources for modders.</p>
+    <a href="about.html">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>About</span>
+    </a>
+
+    <a href="download.html">
+      <i class="fa-solid fa-download"></i>
+      <span>Download</span>
+    </a>
+
+    <a href="contact.html">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+  
+<section class="about-section">
+  
+  <div class="about-card">
+    
+    <img src="favicon.png" class="profile-img">
+    
+    <h1>Roel Acido</h1>
+    <p class="role">Developer • APK Modder • Web Creator</p>
+    
+    <p class="desc">
+      I build simple tools, modded APKs, and clean websites for users who want fast and easy access to apps and resources.
+    </p>
+    
+    <!-- SKILLS -->
+    <div class="skills-section">
+      <h2>Skills</h2>
+      
+      <div class="skills-grid">
+        <div class="skill-card html">
+          <i class="fa-brands fa-html5"></i>
+          <h3>HTML</h3>
+          <p>Structure of websites</p>
+        </div>
+        
+        <div class="skill-card css">
+          <i class="fa-brands fa-css3-alt"></i>
+          <h3>CSS</h3>
+          <p>Design & UI styling</p>
+        </div>
+        
+        <div class="skill-card js">
+          <i class="fa-brands fa-js"></i>
+          <h3>JavaScript</h3>
+          <p>Website interactivity</p>
+        </div>
+        
+        <div class="skill-card apk">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <h3>APK Modding</h3>
+          <p>Android app modification</p>
+        </div>
+      </div>
     </div>
-  </section>
+    
+    <!-- ✅ SOCIAL NASA PINAKA BABA -->
+    <div class="about-social">
+      <a href="https://www.facebook.com/acido.rj" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      
+      <a href="https://t.me/rjacido2k" target="_blank">
+        <i class="fab fa-telegram"></i>
+      </a>
+      
+      <a href="#">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+    
+  </div>
+  
+</section>
 
   <footer>
     <p>© 2025 Roel Acido. All rights reserved.</p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("side-menu").classList.toggle("active");
-    }
+    <script>
+  const navLinks = document.querySelectorAll('.bottom-nav a');
+
+const currentPage = window.location.pathname.split("/").pop();
+
+navLinks.forEach(link => {
+  const linkPage = link.getAttribute("href");
+  
+  // set active on load
+  if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+    link.classList.add("active");
+  }
+  
+  // smooth instant switch on click
+  link.addEventListener("click", function() {
+    navLinks.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
 
     // Disable Ctrl+U and F12
     document.addEventListener('keydown', function(e) {

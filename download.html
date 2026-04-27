@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roel</title>
   <link rel="stylesheet" href="style.css">
-  
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
@@ -17,112 +17,179 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="favicon.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <meta name="msapplication-TileImage" content="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 
-  <header>
-    <h2 class="logo">Roel Acido</h2>
+<header>
+  <h2 class="logo">Rj Acido</h2>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <i class="fa fa-bars"></i>
-    </div>
-  </header>
+</header>
 
-  <nav id="side-menu">
-    <span class="close-btn" onclick="toggleMenu()">
-      <i class="fa fa-times"></i>
-    </span>
 
-    <ul>
-      <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-      <li><a href="about.html"><i class="far fa-question-circle"></i>About</a></li>
-      <li><a href="download.html"><i class="fas fa-download"></i>Download</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-    </ul>
-  </nav>
-
-  <section class="home-hero">
-    <div class="hero-content">
-      <h1>Download</h1>
-      <p>Discover our official Roel Acido download features.</p>
-    </div>
-  </section>
+<nav class="bottom-nav">
+  <a href="index.html">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
   
-  <!-- Search Bar -->
-  <section class="search-section">
-    <input type="text" id="searchBox" placeholder="Search app name..." onkeyup="searchApps()">
-  </section>
+  <a href="about.html">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>About</span>
+  </a>
+  
+  <a href="download.html">
+    <i class="fa-solid fa-download"></i>
+    <span>Download</span>
+  </a>
+  
+  <a href="contact.html">
+    <i class="fa-solid fa-envelope"></i>
+    <span>Contact</span>
+  </a>
+</nav>
 
-  <section class="download-section">
+<!-- CATEGORY -->
+<div class="categories">
+  <button class="active" onclick="filterApps('all', this)">All</button>
+  <button onclick="filterApps('apps', this)">Apps</button>
+  <button onclick="filterApps('games', this)">Games</button>
+  <button onclick="filterApps('tools', this)">Tools</button>
+</div>
 
-    <div class="download-card">
-      <img src="favicon.png">
-      <h3>Modded App 1</h3>
-      <p>Premium</p>
-      <a href="apk1" class="download-btn" target="_blank">
-        <span>Download Now</span>
-      </a>
-    </div>
+<!-- SEARCH -->
+<section class="search-section">
+  <input type="text" id="searchBox" placeholder="Search apps..." onkeyup="searchApps()">
+</section>
 
-    <div class="download-card">
-      <img src="favicon.png">
-      <h3>Modded App 2</h3>
-      <p>Premium</p>
-      <a href="apk2" class="download-btn" target="_blank">
-        <span>Download Now</span>
-      </a>
-    </div>
+<!-- DOWNLOAD SECTION (9 CARDS) -->
+<section class="download-section">
 
-    <div class="download-card">
-      <img src="favicon.png">
-      <h3>Modded App 3</h3>
-      <p>Premium</p>
-      <a href="apk3" class="download-btn" target="_blank">
-        <span>Download Now</span>
-      </a>
-    </div>
+  <!-- 1 -->
+  <div class="download-card" data-type="apps">
+    <img src="favicon.png">
+    <h3>Modded App 1</h3>
+    <p>Version 1.0 • 50MB</p>
+    <a href="apk1" class="download-btn"><i class="bi bi-download"></i> Download</a>
+  </div>
 
-    <div class="download-card">
-      <img src="favicon.png">
-      <h3>Modded App 4</h3>
-      <p>Premium</p>
-      <a href="apk4" class="download-btn" target="_blank">
-        <span>Download Now</span>
-      </a>
-    </div>
+  <!-- 2 -->
+  <div class="download-card" data-type="games">
+    <img src="favicon.png">
+    <h3>Modded App 2</h3>
+    <p>Version 2.1 • 75MB</p>
+    <a href="apk2" class="download-btn"><i class="bi bi-download"></i> Download</a>
+  </div>
 
-  </section>
+  <!-- 3 -->
+  <div class="download-card" data-type="tools">
+    <img src="favicon.png">
+    <h3>Modded App 3</h3>
+    <p>Version 3.0 • 120MB</p>
+    <a href="apk3" class="download-btn"><i class="bi bi-download"></i> Download</a>
+  </div>
 
-  <footer>
-    <p>© 2025 Roel Acido. All rights reserved.</p>
-  </footer>
+  <!-- 4 -->
+  <div class="download-card" data-type="apps">
+    <img src="favicon.png"><h3>Modded App 4</h3><p>Version 1.2</p>
+    <a href="apk4" class="download-btn"><i class="bi bi-download"></i> Download</a>
+</div>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("side-menu").classList.toggle("active");
-    }
+  <!-- 5 -->
+  <div class="download-card" data-type="games">
+    <img src="favicon.png"><h3>Modded App 5</h3><p>Version 1.5</p>
+    <a href="apk5" class="download-btn"><i class="bi bi-download"></i> Download</a>
+</div>
+  <!-- 6 -->
+  <div class="download-card" data-type="tools">
+    <img src="favicon.png"><h3>Modded App 6</h3><p>Version 2.0</p>
+<a href="apk6" class="download-btn"><i class="bi bi-download"></i> Download</a>
+  </div>
 
-    document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey && e.key === 'u') e.preventDefault();
-      if (e.key === 'F12') e.preventDefault();
-    });
+  <!-- 7 -->
+  <div class="download-card" data-type="apps">
+    <img src="favicon.png"><h3>Modded App 7</h3><p>Version 3.1</p>
+<a href="apk7" class="download-btn"><i class="bi bi-download"></i> Download</a>
+</div>
 
-    function searchApps() {
-      const input = document.getElementById("searchBox").value.toLowerCase();
-      const cards = document.querySelectorAll(".download-card");
+  <!-- 8 -->
+  <div class="download-card" data-type="games">
+    <img src="favicon.png"><h3>Modded App 8</h3><p>Version 4.0</p>
+    <a href="apk8" class="download-btn"><i class="bi bi-download"></i> Download</a>
+</div>
 
-      cards.forEach(card => {
-        const name = card.querySelector("h3").textContent.toLowerCase();
-        card.style.display = name.includes(input) ? "block" : "none";
-      });
-    }
-  </script>
+  <!-- 9 -->
+  <div class="download-card" data-type="tools">
+    <img src="favicon.png"><h3>Modded App 9</h3><p>Version 5.0</p>
+    <a href="apk9" class="download-btn"><i class="bi bi-download"></i> Download</a>
+</div>
+
+</section>
+
+<footer>
+  <p>© 2025 Roel Acido. All rights reserved.</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+let currentFilter = "all";
+
+  const navLinks = document.querySelectorAll('.bottom-nav a');
+
+const currentPage = window.location.pathname.split("/").pop();
+
+navLinks.forEach(link => {
+  const linkPage = link.getAttribute("href");
+  
+  // set active on load
+  if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+    link.classList.add("active");
+  }
+  
+  // smooth instant switch on click
+  link.addEventListener("click", function() {
+    navLinks.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.key === 'u') e.preventDefault();
+  if (e.key === 'F12') e.preventDefault();
+});
+
+/* SEARCH + FILTER */
+function updateDisplay(btn = null) {
+  const input = document.getElementById("searchBox").value.toLowerCase();
+  const cards = document.querySelectorAll(".download-card");
+
+  cards.forEach(card => {
+    const name = card.querySelector("h3").textContent.toLowerCase();
+    const type = card.getAttribute("data-type");
+
+    const matchSearch = name.includes(input);
+    const matchFilter = currentFilter === "all" || type === currentFilter;
+
+    card.style.display = (matchSearch && matchFilter) ? "flex" : "none";
+  });
+
+  if (btn) {
+    document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  }
+}
+
+function searchApps() {
+  updateDisplay();
+}
+
+function filterApps(type, btn) {
+  currentFilter = type;
+  updateDisplay(btn);
+}
+</script>
 
 </body>
 </html>
